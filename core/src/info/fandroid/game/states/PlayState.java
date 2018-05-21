@@ -31,7 +31,7 @@ public class PlayState extends State {
         tubes = new Array<Tube>();
 
         //создаем трубы через цикл
-        for (int i = 1; i < TUBE_COUNT; i++){
+        for (int i = 0; i < TUBE_COUNT; i++){
             tubes.add(new Tube((float) (i * (TUBE_SPACING + Tube.TUBE_WIDTH))));
         }
     }
