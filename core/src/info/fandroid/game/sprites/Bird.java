@@ -1,6 +1,7 @@
 package info.fandroid.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
 public class Bird {
@@ -12,6 +13,9 @@ public class Bird {
     private Vector3 position;
     private Vector3 velocity;
 
+    //нарисуем прямоугольные границы вокруг птицы
+    private Rectangle bounds;
+
     private Texture bird;
 
     public Bird(int x, int y) {
@@ -19,6 +23,9 @@ public class Bird {
         velocity = new Vector3(0, 0, 0);
 
         bird = new Texture("bird.png");
+
+        //создаем прямоугольную границу вокруг птицы
+        bounds = new Rectangle(x, y, bird.getWidth(), bird.getHeight());
     }
 
     public Vector3 getPosition() {
@@ -42,9 +49,17 @@ public class Bird {
         }
 
         velocity.scl(1 / dt);
+
+        //создаем позицию границы
+        bounds.setPosition(position.x, position.y);
     }
 
     public void jump() {
         velocity.y = 250;
+    }
+
+    //создаем геттер для доступа к прямоугольнику из других классов
+    public Rectangle getBounds() {
+        return bounds;
     }
 }
