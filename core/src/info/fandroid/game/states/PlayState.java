@@ -70,7 +70,7 @@ public class PlayState extends State {
 
             //при столкновении перезапускаем игру
             if (tube.collides(bird.getBounds())) {
-                gsm.set(new PlayState(gsm));
+                gsm.set(new GameOver(gsm));
             }
         }
 
